@@ -1,0 +1,132 @@
+/* Basic resets for nav look */
+.navbar {
+  position: sticky;
+  top: 0;
+  z-index: 1000;
+  background: #0b0b0b;
+  color: silver;
+  padding: 10px 16px;
+  box-shadow: 0 2px 6px rgba(0,0,0,0.25);
+}
+.navbar:hover {
+  background: silver;
+  .brand{
+  color: black;
+  }
+  .menu-icon{
+    color: black;
+  }
+   .nav-link{
+    color: black;
+   }
+}
+
+/* inner flex container: brand left, links center/right, menu icon right */
+.nav-inner {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 20px;
+  max-width: 1100px;
+  margin: 0 auto;
+}
+
+/* brand/title */
+.brand {
+  font-weight: 800;
+  color: silver; /* pink-ish */
+  font-size: 1.25rem;
+  cursor: pointer;
+  user-select: none;
+  font-family: "JetBrains Mono", sans-serif;
+
+
+}
+
+/* desktop links (hidden on mobile) */
+.nav-links {
+  display: flex;
+  gap: 28px;
+  align-items: center;
+}
+
+/* link styles */
+.nav-link {
+  background: none;
+  border: none;
+  color: silver;
+  font-size: 1rem;
+  cursor: pointer;
+  padding: 6px 8px;
+  font-weight: 600;
+}
+
+
+/* hamburger button (hidden on desktop) */
+.menu-icon {
+  display: none;
+  background: none;
+  border: none;
+  color: silver;
+  cursor: pointer;
+}
+
+/* mobile menu initially hidden (height 0, invisible) */
+.mobile-menu {
+  position: absolute;
+  left: 0;
+  right: 0;
+  top: 100%;              /* directly under the header */
+  overflow: hidden;
+  max-height: 0;
+  opacity: 0;
+  background: #1a1a1a;
+  transition: max-height 300ms ease, opacity 300ms ease, transform 300ms ease;
+  transform-origin: top center;
+  transform: translateY(-8px) scaleY(0.98);
+  border-bottom-left-radius: 10px;
+  border-bottom-right-radius: 10px;
+  box-shadow: 0 10px 30px rgba(0,0,0,0.4);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 0 12px;
+}
+
+/* open state: animate into view */
+.mobile-menu.open {
+  max-height: 400px; /* enough to show links */
+  opacity: 1;
+  transform: translateY(0) scaleY(1);
+  padding: 12px 12px 18px;
+}
+
+/* mobile link styles */
+.mobile-link {
+  background: none;
+  border: none;
+  color: silver;
+  width: 100%;
+  text-align: center;
+  padding: 12px 8px;
+  font-size: 1.05rem;
+  cursor: pointer;
+  font-weight: 600;
+  border-radius: 8px;
+}
+.mobile-link:hover { background: silver; color:#1a1a1a; }
+
+/* RESPONSIVE: show hamburger and hide desktop links on small screens */
+@media (max-width: 768px) {
+  .nav-links { display: none; }
+  .menu-icon { display: block; }
+
+  /* Ensure nav-inner keeps layout with brand left and icon right */
+  .nav-inner { justify-content: space-between; }
+}
+
+/* Small refinement for very small screens */
+@media (max-width: 420px) {
+  .brand { font-size: 1.05rem; }
+  .mobile-link { font-size: 1rem; padding: 10px 6px; }
+}
