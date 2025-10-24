@@ -70,7 +70,7 @@ export default function Hero() {
             <div className="home-img-overlay"></div>
             
             <img
-              src="./src/me.jpg"
+              src="/me.jpg"
               alt="Arslan"
               className="home-img"
             />
